@@ -1,0 +1,32 @@
+name: Version Bump
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'solana-auditor/**'
+      - '!solana-auditor/VERSION'
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Bump version
+        run: |
+          CURRENT=$(cat solana-auditor/VERSION | tr -d '[:space:]')
+          NEW=$((CURRENT + 1))
+          echo "$NEW" > solana-auditor/VERSION
+          echo "Version bump: ${CURRENT} -> ${NEW}"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add solana-auditor/VERSION
+          git diff --cached --quiet && exit 0
+          git commit -m "bump(solana-auditor): $(cat solana-auditor/VERSION)"
+          git push
