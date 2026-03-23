@@ -7,6 +7,9 @@ on:
       - 'solana-auditor/**'
       - '!solana-auditor/VERSION'
 
+permissions:
+  contents: write
+
 jobs:
   bump:
     runs-on: ubuntu-latest

@@ -7,7 +7,7 @@ Save the report to `assets/findings/{project-name}-solana-ai-audit-report-{times
 ## Output Format
 
 ````
-# 🔐 Security Review — <ProgramName or repo name>
+# Security Review — <ProgramName or repo name>
 
 ---
 
@@ -18,8 +18,6 @@ Save the report to `assets/findings/{project-name}-solana-ai-audit-report-{times
 | **Mode**                         | ALL / default / filename                               |
 | **Framework**                    | Anchor / Native Rust / Pinocchio                       |
 | **Files reviewed**               | `File1.rs` · `File2.rs`<br>`File3.rs` · `File4.rs`    | <!-- list every file, 3 per line -->
-| **Attack vectors checked**       | 120 (across N agents)                                  |
-| **Agents deployed**              | N vector-scan + adversarial + protocol                 |
 | **Confidence threshold (1-100)** | N                                                      |
 
 ---
@@ -56,7 +54,20 @@ Save the report to `assets/findings/{project-name}-solana-ai-audit-report-{times
 ```
 ---
 
-< ... all findings >
+< ... all above-threshold findings >
+
+---
+
+[75] **3. <Title>**
+
+`program::instruction_handler` · Confidence: 75
+
+**Description**
+<The vulnerable code pattern and why it is exploitable, in 1 short sentence>
+
+---
+
+< ... all below-threshold findings (description only, no Fix block) >
 
 ---
 
@@ -66,13 +77,20 @@ Findings List
 |---|---|---|
 | 1 | [95] | <title> |
 | 2 | [82] | <title> |
-| | | **Below Confidence Threshold** |
 | 3 | [75] | <title> |
-| 4 | [60] | <title> |
 
 ---
 
-> ⚠️ This review was performed by an AI assistant. AI analysis can never verify the complete absence of vulnerabilities and no guarantee of security is given. Team security reviews, bug bounty programs, and on-chain monitoring are strongly recommended.
+## Leads
+
+_Vulnerability trails with concrete code smells where the full exploit path could not be completed in one analysis pass. These are not false positives — they are high-signal leads for manual review. Not scored._
+
+- **<Title>** — `program.handler` — Code smells: <missing guard, unsafe arithmetic, etc.> — <1-2 sentence description of the trail and what remains unverified>
+- **<Title>** — `program.handler` — Code smells: <...> — <1-2 sentence description>
+
+---
+
+> This review was performed by an AI assistant. AI analysis can never verify the complete absence of vulnerabilities and no guarantee of security is given. Team security reviews, bug bounty programs, and on-chain monitoring are strongly recommended. Attribution: audit workflow lineage from [pashov/skills](https://github.com/pashov/skills), adapted for Solana.
 
 ````
 
