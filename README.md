@@ -2,6 +2,8 @@
 
 > AI-powered Solana security skills for programs where account validation, PDA derivation, CPI safety, and runtime semantics decide whether the code is actually safe.
 
+Built on the v2 packaging and workflow model from [pashov/skills](https://github.com/pashov/skills), then adapted for Solana-specific security review.
+
 **Supported AI Platforms:**
 [![Claude Code](https://img.shields.io/badge/Claude_Code-F5E6D0?style=for-the-badge&logo=anthropic&logoColor=1a1a1a)](https://claude.ai/download)
 [![Cursor](https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white)](https://cursor.com)

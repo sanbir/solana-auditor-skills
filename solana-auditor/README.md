@@ -2,6 +2,8 @@
 
 A security agent for **Solana programs**.
 
+Attribution: this fork keeps the v2 packaging and audit workflow lineage from [pashov/skills](https://github.com/pashov/skills), adapted for Solana programs.
+
 Built for:
 
 - **Program developers** who want a security pass before shipping instruction changes
